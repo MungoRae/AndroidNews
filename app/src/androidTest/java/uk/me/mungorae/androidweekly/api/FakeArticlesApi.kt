@@ -4,17 +4,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 
-class FakeArticlesApi: ArticlesApi {
-    val queue: Queue<List<Article>> = LinkedList()
+class FakeArticlesApi : ArticlesApi {
+    val queue: Queue<Result<List<Article>>> = LinkedList()
 
     override suspend fun getArticles(): List<Article> {
         return withContext(Dispatchers.IO) {
-            var next: List<Article>? = null
+            var result: Result<List<Article>>? = null
             do {
-                next = queue.poll()
-            } while (next == null)
+                result = queue.poll()
+            } while (result == null)
 
-            next
+            result.getOrThrow()
         }
     }
 }

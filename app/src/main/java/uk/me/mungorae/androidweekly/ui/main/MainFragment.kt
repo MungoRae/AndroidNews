@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -37,10 +38,23 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.main_recycler_view)
+        val errorView = view.findViewById<TextView>(R.id.main_text_error)
         recyclerView.adapter = ArticleAdapter(layoutInflater)
 
         viewModel.articles.observe(viewLifecycleOwner) {
             recyclerView.articleAdapter().setItems(it)
+        }
+        viewModel.error.observe(viewLifecycleOwner) {
+            when (it) {
+                MainViewModel.Error.Download -> {
+                    errorView.visibility = View.VISIBLE
+                    errorView.setText(R.string.error_article_download)
+                }
+                MainViewModel.Error.None -> {
+                    errorView.visibility = View.GONE
+                    errorView.text = ""
+                }
+            }
         }
 
         viewModel.onViewCreated()

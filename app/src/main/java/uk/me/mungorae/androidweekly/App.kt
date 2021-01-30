@@ -19,4 +19,8 @@ open class App : Application() {
         return DaggerAppComponent.builder()
             .build()
     }
+
+    companion object {
+        const val TAG: String = "AWApp"
+    }
 }

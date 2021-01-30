@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android Weekly</string>
+    <string name="error_article_download">Sorry an error has occured while downloading articles.</string>
 </resources>

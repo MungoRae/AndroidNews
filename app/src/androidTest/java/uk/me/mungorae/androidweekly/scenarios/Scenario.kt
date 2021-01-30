@@ -32,3 +32,9 @@ abstract class Scenario {
     abstract fun when_(): List<Stage>
     abstract fun then(): List<Stage>
 }
+
+// Pull to refresh
+// pages
+// click article
+// search title and description
+// filter by date
