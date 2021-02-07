@@ -38,3 +38,4 @@ abstract class Scenario {
 // click article
 // search title and description
 // filter by date
+// local store

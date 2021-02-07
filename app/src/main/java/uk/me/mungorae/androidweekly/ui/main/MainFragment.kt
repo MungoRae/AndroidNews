@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import uk.me.mungorae.androidweekly.App
 import uk.me.mungorae.androidweekly.R
@@ -39,7 +40,9 @@ class MainFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.main_recycler_view)
         val errorView = view.findViewById<TextView>(R.id.main_text_error)
-        recyclerView.adapter = ArticleAdapter(layoutInflater)
+        recyclerView.adapter = ArticleAdapter(layoutInflater) {
+            viewModel.onArticleSelected(it)
+        }
 
         viewModel.articles.observe(viewLifecycleOwner) {
             recyclerView.articleAdapter().setItems(it)
@@ -56,15 +59,14 @@ class MainFragment : Fragment() {
                 }
             }
         }
+        viewModel.showArticle.observe(viewLifecycleOwner) {
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToArticleFragment(it))
+        }
 
         viewModel.onViewCreated()
     }
 
-    fun RecyclerView.articleAdapter(): ArticleAdapter {
+    private fun RecyclerView.articleAdapter(): ArticleAdapter {
         return adapter as ArticleAdapter
-    }
-
-    companion object {
-        fun newInstance() = MainFragment()
     }
 }

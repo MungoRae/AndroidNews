@@ -10,6 +10,7 @@ import uk.me.mungorae.androidweekly.App
 import uk.me.mungorae.androidweekly.api.Article
 import uk.me.mungorae.androidweekly.api.ArticlesApi
 import uk.me.mungorae.androidweekly.coroutines.DispatcherProvider
+import uk.me.mungorae.androidweekly.ui.SingleLiveEvent
 import java.lang.Error
 import javax.inject.Inject
 
@@ -22,6 +23,8 @@ class MainViewModel @Inject constructor(
 
     private val _error = MutableLiveData<Error>()
     val error: LiveData<Error> = _error
+
+    val showArticle = SingleLiveEvent<Article>()
 
     fun onViewCreated() {
         _error.postValue(Error.None)
@@ -39,6 +42,10 @@ class MainViewModel @Inject constructor(
                 _error.postValue(Error.Download)
             }
         }
+    }
+
+    fun onArticleSelected(article: Article) {
+        showArticle.postValue(article)
     }
 
     sealed class Error {
