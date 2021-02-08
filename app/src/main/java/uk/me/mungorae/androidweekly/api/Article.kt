@@ -7,4 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class Article(
     val title: String,
     val description: String,
+    val link: String,
 ): Parcelable

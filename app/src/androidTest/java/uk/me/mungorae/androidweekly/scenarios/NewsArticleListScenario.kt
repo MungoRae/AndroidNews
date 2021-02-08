@@ -19,6 +19,7 @@ class NewsArticleListScenario: Scenario() {
             Article(
                 title = "Article $it",
                 description = "Description $it",
+                link = "https://mysite.com",
             )
         }
     }

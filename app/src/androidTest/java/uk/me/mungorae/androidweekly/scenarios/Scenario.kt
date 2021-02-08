@@ -17,15 +17,21 @@ abstract class Scenario {
 
     @Test
     fun run() {
-        given().forEach {
-            it.begin()
+        runScenario {
+            given().forEach {
+                it.begin()
+            }
+            when_().forEach {
+                it.begin()
+            }
+            then().forEach {
+                it.begin()
+            }
         }
-        when_().forEach {
-            it.begin()
-        }
-        then().forEach {
-            it.begin()
-        }
+    }
+
+    open fun runScenario(scenario: () -> Unit) {
+        scenario.invoke()
     }
 
     open fun given(): List<Stage> = emptyList()

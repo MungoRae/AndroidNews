@@ -59,6 +59,10 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+    // Api
+    def okhttp_version = "4.9.1"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     testImplementation 'junit:junit:4.13.1'
 
@@ -75,8 +79,12 @@ dependencies {
     androidTestImplementation 'com.google.truth:truth:1.0'
 
     // Espresso dependencies
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
+    def espresso_version = "3.3.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-web:$espresso_version"
+
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
 
     // Dagger
     kaptAndroidTest 'com.google.dagger:dagger-compiler:2.31.2'

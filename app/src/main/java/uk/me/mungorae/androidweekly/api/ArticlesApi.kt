@@ -10,7 +10,11 @@ interface ArticlesApi {
     class Retrofit : ArticlesApi {
         override suspend fun getArticles(): List<Article> {
             return withContext(Dispatchers.IO) {
-                listOf(Article("Dagger on Android", "Material is a design system created by Google to help teams build high-quality digital experiences for Android, iOS, Flutter, and the web."))
+                listOf(Article(
+                    title = "Dagger on Android",
+                    description = "Material is a design system created by Google to help teams build high-quality digital experiences for Android, iOS, Flutter, and the web.",
+                    link = "https://www.bbc.co.uk",
+                ))
             }
         }
     }

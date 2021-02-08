@@ -7,7 +7,9 @@ import dagger.Component
         AppModule::class,
         ViewModelModule::class,
         TestApiModule::class,
+        NetworkingModule::class,
     ]
 )
+@ApplicationScope
 interface TestComponent: AppComponent {
 }
