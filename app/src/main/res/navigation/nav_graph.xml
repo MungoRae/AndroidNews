@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="uk.me.mungorae.androidweekly.ui.main.MainFragment"
+        android:name="uk.me.mungorae.androidnews.ui.main.MainFragment"
         android:label="main_fragment"
         tools:layout="@layout/main_fragment">
         <action
@@ -16,11 +16,11 @@
     </fragment>
     <fragment
         android:id="@+id/articleFragment"
-        android:name="uk.me.mungorae.androidweekly.ui.article.ArticleFragment"
+        android:name="uk.me.mungorae.androidnews.ui.article.ArticleFragment"
         android:label="ArticleFragment"
         tools:layout="@layout/article_fragment">
         <argument
             android:name="article"
-            app:argType="uk.me.mungorae.androidweekly.api.Article" />
+            app:argType="uk.me.mungorae.androidnews.api.Article" />
     </fragment>
 </navigation>

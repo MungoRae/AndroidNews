@@ -11,13 +11,13 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "uk.me.mungorae.androidweekly"
+        applicationId "uk.me.mungorae.androidnews"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "uk.me.mungorae.androidweekly.runner.CustomRunner"
+        testInstrumentationRunner "uk.me.mungorae.androidnews.runner.CustomRunner"
     }
 
     buildTypes {

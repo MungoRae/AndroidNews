@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Android Weekly"
+rootProject.name = "Android News"
